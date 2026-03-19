@@ -1,4 +1,4 @@
-// 1. Usamos un ciclo for para repetir el proceso 5 veces
+// 1. Usamos un ciclo for para repetir el proceso 5 vecess
 for (let i = 1; i <= 5; i++) {
 
   // 2. Pedimos el nombre y la nota del estudiante
