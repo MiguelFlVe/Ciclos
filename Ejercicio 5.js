@@ -1,39 +1,23 @@
-// --- Programa: Tienda de Productos (Ejercicio 5) ---
+// 1. Variables iniciales
+let total = 0;
+let continuar = "si";
 
-let totalCompra = 0;
-let continuar = true;
+// 2. Ciclo para pedir productos
+while (continuar == "si") {
+  let precio = prompt("¿Cuánto cuesta el producto?");
 
-alert("--- Bienvenido a la Tienda Virtual ADSO ---");
+  // Sumamos el precio al total
+  total = total + parseFloat(precio);
 
-// Usamos un ciclo while porque no sabemos cuántos productos llevará el usuario
-while (continuar) {
-  let nombreProducto = prompt("Ingrese el nombre del producto:");
-  let precio = parseFloat(prompt(`Ingrese el precio de '${nombreProducto}':`));
-
-  // Validamos que el precio sea un número válido
-  if (!isNaN(precio) && precio > 0) {
-    totalCompra += precio; // Acumulamos el valor en el total
-    alert(`Producto: ${nombreProducto} añadido.\nSubtotal actual: $${totalCompra.toLocaleString()}`);
-  } else {
-    alert("Precio no válido. Intente de nuevo.");
-  }
-
-  // Preguntamos si desea seguir comprando
-  let respuesta = prompt("¿Desea registrar otro producto? (si/no)").toLowerCase();
-  if (respuesta !== "si" && respuesta !== "s") {
-    continuar = false;
-  }
+  continuar = prompt("¿Quieres comprar otro producto? (si/no)");
 }
 
-// Lógica de descuento (10% si supera los $100.000)
-let descuento = 0;
-let valorFinal = totalCompra;
-
-if (totalCompra > 100000) {
-  descuento = totalCompra * 0.10;
-  valorFinal = totalCompra - descuento;
-  alert(`¡Felicidades! Se aplicó un descuento del 10% ($${descuento.toLocaleString()}).`);
+// 3. Aplicar descuento si el total es mayor a 100.000
+if (total > 100000) {
+  let descuento = total * 0.10;
+  total = total - descuento;
+  alert("Se aplicó un descuento del 10%");
 }
 
-// Resultado Final
-alert(`--- RESUMEN DE COMPRA ---\nTotal Bruto: $${totalCompra.toLocaleString()}\nDescuento: $${descuento.toLocaleString()}\nVALOR A PAGAR: $${valorFinal.toLocaleString()}\n\n¡Gracias por su compra!`);
+// 4. Mostrar resultado final
+alert("El total a pagar es: $" + total);

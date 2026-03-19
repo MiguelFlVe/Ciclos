@@ -1,30 +1,19 @@
-// --- Programa: Promedio de Notas (Ejercicio 4) ---
+// 1. Usamos un ciclo for para repetir el proceso 5 veces
+for (let i = 1; i <= 5; i++) {
 
-// Definimos la cantidad de estudiantes
-const totalEstudiantes = 5;
+  // 2. Pedimos el nombre y la nota del estudiante
+  let nombre = prompt("Nombre del estudiante " + i + ":");
+  let nota = prompt("Ingrese la nota de " + nombre + ":");
 
-// Iniciamos un ciclo para solicitar los datos de manera ordenada
-for (let i = 1; i <= totalEstudiantes; i++) {
+  // Convertimos la nota a número decimal
+  nota = parseFloat(nota);
 
-  // Solicitamos el nombre del estudiante
-  let nombre = prompt(`Estudiante #${i}\nIngrese el nombre:`);
-
-  // Solicitamos la nota (convertimos el texto a número decimal con parseFloat)
-  let nota = parseFloat(prompt(`Ingrese la nota final de ${nombre}:`));
-
-  // Validamos que el dato ingresado sea un número válido
-  if (isNaN(nota)) {
-    alert("Error: Por favor ingrese un número válido para la nota.");
-    i--; // Restamos 1 al contador para repetir la entrada de este estudiante
-    continue;
-  }
-
-  // Lógica condicional para determinar aprobación
+  // 3. Condicional para ver si aprueba o reprueba
   if (nota >= 3.0) {
-    alert(`RESULTADO:\nEstudiante: ${nombre}\nNota: ${nota}\nEstado: APROBADO ✅`);
+    alert(nombre + " tiene un promedio de " + nota + " - APROBADO ");
   } else {
-    alert(`RESULTADO:\nEstudiante: ${nombre}\nNota: ${nota}\nEstado: REPROBADO ❌`);
+    alert(nombre + " tiene un promedio de " + nota + " - REPROBADO ");
   }
 }
 
-alert("Proceso de ingreso de notas finalizado.");
+alert("Ya se registraron los 5 estudiantes.");
