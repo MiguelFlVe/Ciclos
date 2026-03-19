@@ -1,26 +1,39 @@
-// 1. Empezamos con el primer corredor de los 8
-for (let corredor = 1; corredor <= 8; corredor++) {
+// --- Programa: Tienda de Productos (Ejercicio 5) ---
 
-  alert("¡Es el turno del Corredor número " + corredor + "!");
+let totalCompra = 0;
+let continuar = true;
 
-  // 2. Intentamos que este corredor dé sus 4 vueltas
-  for (let vuelta = 1; vuelta <= 4; vuelta++) {
+alert("--- Bienvenido a la Tienda Virtual ADSO ---");
 
-    // Preguntamos si se cansó
-    let cansado = prompt("Corredor " + corredor + " - Vuelta " + vuelta + ". ¿Te cansaste? (Escribe 'si' o 'no')");
+// Usamos un ciclo while porque no sabemos cuántos productos llevará el usuario
+while (continuar) {
+  let nombreProducto = prompt("Ingrese el nombre del producto:");
+  let precio = parseFloat(prompt(`Ingrese el precio de '${nombreProducto}':`));
 
-    if (cansado === "si") {
-      alert("El corredor " + corredor + " se cansó. ¡Siguiente!");
-      break; // El corredor actual se sale, pero el ciclo de 8 sigue
-    } else {
-      alert("Corredor " + corredor + " completó la vuelta " + vuelta);
-    }
+  // Validamos que el precio sea un número válido
+  if (!isNaN(precio) && precio > 0) {
+    totalCompra += precio; // Acumulamos el valor en el total
+    alert(`Producto: ${nombreProducto} añadido.\nSubtotal actual: $${totalCompra.toLocaleString()}`);
+  } else {
+    alert("Precio no válido. Intente de nuevo.");
+  }
 
-    // Si llega a la última vuelta sin decir "si"
-    if (vuelta === 4) {
-      alert("¡EXCELENTE! El corredor " + corredor + " terminó las 4 vueltas.");
-    }
+  // Preguntamos si desea seguir comprando
+  let respuesta = prompt("¿Desea registrar otro producto? (si/no)").toLowerCase();
+  if (respuesta !== "si" && respuesta !== "s") {
+    continuar = false;
   }
 }
 
-alert("La competencia de los 8 corredores ha terminado.");
+// Lógica de descuento (10% si supera los $100.000)
+let descuento = 0;
+let valorFinal = totalCompra;
+
+if (totalCompra > 100000) {
+  descuento = totalCompra * 0.10;
+  valorFinal = totalCompra - descuento;
+  alert(`¡Felicidades! Se aplicó un descuento del 10% ($${descuento.toLocaleString()}).`);
+}
+
+// Resultado Final
+alert(`--- RESUMEN DE COMPRA ---\nTotal Bruto: $${totalCompra.toLocaleString()}\nDescuento: $${descuento.toLocaleString()}\nVALOR A PAGAR: $${valorFinal.toLocaleString()}\n\n¡Gracias por su compra!`);

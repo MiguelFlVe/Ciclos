@@ -1,26 +1,21 @@
-let boletosVendidos = 0;
-const totalBoletos = 15;
+// 1. El programa elige un número del 1 al 20
+let numeroSecreto = 12; // Lo ponemos fijo primero para probar, o usa: Math.floor(Math.random() * 20) + 1;
+let intento = 0;
 
-alert("--- Bienvenida a la Taquilla del Cine (Película de Adultos) ---");
+alert("¡Adivina el número del 1 al 20!");
 
-// Usamos un ciclo 'while' para que siga hasta completar los 15 boletos
-while (boletosVendidos < totalBoletos) {
+// 2. El ciclo se repite MIENTRAS el intento sea diferente al número secreto
+while (intento != numeroSecreto) {
 
-  let faltantes = totalBoletos - boletosVendidos;
-  alert("Boletos vendidos: " + boletosVendidos + ". Quedan: " + faltantes);
+  intento = prompt("Introduce un número:");
 
-  // 1. Preguntamos la edad del comprador actual
-  let edad = prompt("Cliente nuevo: ¿Qué edad tienes?");
-  edad = Number(edad);
-
-  // 2. Revisamos la regla de oro (Mayor de 18)
-  if (edad >= 18) {
-    boletosVendidos = boletosVendidos + 1; // Sumamos un boleto vendido
-    alert("¡Venta exitosa! Boleto número " + boletosVendidos + " entregado.");
-  } else {
-    // Si es menor, no sumamos nada a 'boletosVendidos'
-    alert("Lo siento, eres menor de edad. Esta película es para adultos. ¡Siguiente en la fila!");
+  if (intento < numeroSecreto) {
+    alert("Es más ALTO");
+  }
+  else if (intento > numeroSecreto) {
+    alert("Es más BAJO");
   }
 }
 
-alert("¡Se han agotado los 15 boletos! La sala está llena.");
+// 3. Si sale del ciclo es porque adivinó
+alert("¡Felicidades! Ganaste.");
